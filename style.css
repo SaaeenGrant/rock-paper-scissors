@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: #403000;
+}
+
+body {
+    background-color: #fdebb9;
+}
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #F9BD16;
+    font-weight: bold;
+}
+
+button, .win-state {
+    user-select: none;
+    -webkit-user-select: none; /*Safari*/
+    -moz-user-select: none; /*Firefox*/
+}
+
+.game {
+    max-width: 600px;
+    margin: auto;
+}
+
+.game-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 60px;
+}
+
+.reset, .history,   .settings {
+    padding: .5rem 1.25rem;
+    font-size: 16px;
+}
+
+.main-menu {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    height: 50vh;
+    background-color: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    transition: all .5s;
+
+}
+
+.play {
+    padding: .75rem 3rem;
+    font-size: 16px;
+}
+
+
+.score-board {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card p, .match p {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.win-state { cursor: default;}
+
+.player-selection-img, .computer-selection-img, .option-img {
+    width: 170px;
+    height: 170px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.option-img {
+    cursor: pointer;
+    text-align: center;
+    color: transparent;
+}
+
+.match {
+    margin-top: 50px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rock{ background-image: url(./images/rock.png);}
+.paper{ background-image: url(./images/paper.png);}
+.scissors{ background-image: url(./images/scissors.png);}
+
+.match-score-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all .5s;
+}
+
+div.fadeout {
+    opacity: 0;
+    pointer-events: none;
+}
+
+div.fadein {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.win-state {
+    width: 120px;
+}
