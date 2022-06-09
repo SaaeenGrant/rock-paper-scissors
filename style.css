@@ -16,12 +16,17 @@ button {
     cursor: pointer;
     background-color: #F9BD16;
     font-weight: bold;
+    transition: ease-in .3s;
 }
 
 button, .win-state {
     user-select: none;
     -webkit-user-select: none; /*Safari*/
     -moz-user-select: none; /*Firefox*/
+}
+
+button:hover {
+    background-color: #DAA000;
 }
 
 .game {
@@ -56,13 +61,18 @@ button, .win-state {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    transition: all .5s;
 
 }
 
 .play {
     padding: .75rem 3rem;
     font-size: 16px;
+    transition: ease-in .3s;
+}
+
+.play:hover {
+    transform: translateY(-5px);
+    background-color: #DAA000;
 }
 
 
@@ -91,6 +101,11 @@ button, .win-state {
     cursor: pointer;
     text-align: center;
     color: transparent;
+    transition: ease-in .3s;
+}
+
+.option-img:hover, .option-img:focus{
+    transform: translateY(-8px);
 }
 
 .match {
@@ -111,17 +126,18 @@ button, .win-state {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: all .5s;
 }
 
 div.fadeout {
     opacity: 0;
     pointer-events: none;
+    transition: all .3s;
 }
 
 div.fadein {
     opacity: 1;
     pointer-events: all;
+    transition: all 1s;
 }
 
 .win-state {
