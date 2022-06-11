@@ -28,6 +28,7 @@
         </div>
 
         <div class="match-score-container fadeout">
+            <h1>Best of <span class="bestof"></span></h1>
             <div class="score-board">
                 <div class="card">
                     <p>Player <span class="player-score">0</span></p>
@@ -49,8 +50,37 @@
                 </div>
             </div>
         </div>
+
+        <div class="win-screen fadeout">
+            <div class="win-card">
+                <h1 class="win-message">You Win!</h1>
+                <button class="play-again">Play Again</button>
+            </div>
+        </div>
+
+        <div class="settings-screen fadeout">
+            <div class="settings-card">
+                <div class="exit">
+                    <div class="bar bar-1">
+                        <div class="bar bar-2"></div>
+                    </div>
+                </div>
+
+                <h1>Settings</h1>
+                <div class="settings-content">
+                    <div class="rounds">
+                        <div class="arrow increment">+</div>
+                        <div class="rounds-count"><p></p></div>
+                        <div class="arrow decrement">-</div>
+                    </div>
+
+                    <button class="apply">Apply Changes</button>
+                </div>
+
+            </div>
+        </div>
     </section>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>

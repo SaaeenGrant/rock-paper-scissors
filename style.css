@@ -19,7 +19,7 @@ button {
     transition: ease-in .3s;
 }
 
-button, .win-state {
+button, .win-state, .win-message, .arrow {
     user-select: none;
     -webkit-user-select: none; /*Safari*/
     -moz-user-select: none; /*Firefox*/
@@ -40,6 +40,10 @@ button:hover {
     align-items: center;
     gap: 2rem;
     height: 60px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .reset, .history,   .settings {
@@ -64,17 +68,22 @@ button:hover {
 
 }
 
-.play {
+.play, .play-again {
     padding: .75rem 3rem;
     font-size: 16px;
     transition: ease-in .3s;
 }
 
-.play:hover {
+.play:hover, .play-again:hover {
     transform: translateY(-5px);
     background-color: #DAA000;
 }
 
+.match-score-container h1 {
+    margin-top: 45px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 .score-board {
     text-align: center;
@@ -96,6 +105,8 @@ button:hover {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.player-selection-img, .computer-selection-img {background-color: #e4cb81; border-radius: 10%;}
 
 .option-img {
     cursor: pointer;
@@ -122,16 +133,136 @@ button:hover {
 .scissors{ background-image: url(./images/scissors.png);}
 
 .match-score-container {
-    height: calc(100vh - 60px);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.win-state {
+    width: 120px;
+}
+
+.win-screen, .settings-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    background-color: #40300050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-card, .settings-card {
+    width: 600px;
+    height: 340px;
+    background-color: #e4cb81;
+    display: flex;
+}
+
+.win-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-message {
+    font-size: 4rem;
+    padding: 1.25rem 0rem;
+    letter-spacing: .5rem;
+    
+}
+
+.settings-card {
+    position: relative;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4rem 0rem;
+}
+
+.settings-content {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+.rounds {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
+
+.rounds-count {
+    height: 100%;
+    width: 100px;
+    margin: 0rem .2rem;
+    background-color: #c9b373;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rounds-count p {
+    text-align: center;
+    color: #403000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.apply {
+    padding: .75rem 0rem;
+    width: calc(180px + .4rem);
+    font-size: 16px;
+    transition: ease-in .3s;
+}
+
+.arrow {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #403000;
+    color: #e4cb81;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.exit {
+    width: 30px;
+    height: 30px;
+    background-color: #403000;
+    position: absolute;
+    top: 0%;
+    left: calc(100% - 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bar {
+    height: 15px;
+    width: 2px;
+    background-color: #e4cb81;
+}
+
+.bar-1 {transform: rotate(45deg);}
+.bar-2 {transform: rotate(90deg);}
+
+
 div.fadeout {
     opacity: 0;
     pointer-events: none;
-    transition: all .3s;
+    transition: all .1s;
 }
 
 div.fadein {
@@ -140,6 +271,7 @@ div.fadein {
     transition: all 1s;
 }
 
-.win-state {
-    width: 120px;
+div.blur {
+    filter: blur(5px);
+    transition: all .1s;
 }

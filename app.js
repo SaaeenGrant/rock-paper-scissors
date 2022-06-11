@@ -1,25 +1,28 @@
-const game = () => {
+import settingsToggle from "./settings.js" 
 
+const game = () => {
+     
     let playerScore = 0
     let computerScore = 0
+    let rounds = 5
     let mainMenu = document.querySelector('.main-menu')
     let matchMenu = document.querySelector('.match-score-container')
+    let winScreen = document.querySelector('.win-screen')
+    let winState = document.querySelector('.win-state')
     let options = document.querySelectorAll('.options .option-img')
     let playerImage = document.querySelector('.player-selection-img')
     let computerImage = document.querySelector('.computer-selection-img')
+
 
     const startGame = () => {
         let playButton = document.querySelector('.play')
        
         playButton.addEventListener("click", () => {
-            mainMenu.classList.remove('fadein')
-            mainMenu.classList.add('fadeout')
-            matchMenu.classList.remove('fadeout')
-            matchMenu.classList.add('fadein')
-
+            mainMenu.classList.replace('fadein', 'fadeout')
+            matchMenu.classList.replace('fadeout', 'fadein')
         })   
 
-        playGame()  
+        playGame()   
     }
 
     const resetGame = () => {
@@ -27,17 +30,9 @@ const game = () => {
         let resetButton = document.querySelector('.reset')
 
          resetButton.addEventListener("click", () => {
-             mainMenu.classList.add('fadein')
-             matchMenu.classList.remove('fadein')
-             matchMenu.classList.add('fadeout')
-
-             playerScore = 0
-             computerScore = 0
-             updateScore() 
-
-             playerImage.style.backgroundImage = ``
-             computerImage.style.backgroundImage = ``
-             
+            mainMenu.classList.add('fadein')
+            matchMenu.classList.replace('fadein', 'fadeout')
+            defaultState()
          })
     }
 
@@ -60,8 +55,6 @@ const game = () => {
     }
 
     const handComparison = (playerHand, computerHand) => {
-
-        let winState = document.querySelector('.win-state')
 
         if (playerHand === "rock") {
             if(computerHand === "scissors") {
@@ -123,13 +116,50 @@ const game = () => {
         let computerScoreText = document.querySelector('.computer-score')
         playerScoreText.textContent = playerScore
         computerScoreText.textContent = computerScore
+        winScreenDisplay()
     }
 
+    const winScreenDisplay = () => {
+        let totalScore = playerScore + computerScore
+        let winMessage = document.querySelector('.win-message')
+        let playAgain = document.querySelector('.play-again')
+
+        if(totalScore === rounds) {
+            matchMenu.classList.add('blur')
+            winScreen.classList.replace('fadeout', 'fadein')
+            
+            if(playerScore > computerScore){
+                winMessage.textContent = "You Win!"
+                return
+            } else {
+                winMessage.textContent = "You Lose!"
+                return
+            }
+        }
+
+        playAgain.addEventListener('click', () => {
+            winScreen.classList.replace('fadeout', 'fadein')
+            matchMenu.classList.remove('blur')
+            defaultState()
+        })
+    }
+
+    const defaultState = () => {
+        playerScore = 0
+        computerScore = 0
+        updateScore() 
+
+        playerImage.style.backgroundImage = null
+        computerImage.style.backgroundImage = null
+
+        winState.textContent = ""
+        winScreen.classList.replace('fadein', 'fadeout')
+    }
 
     resetGame()
     startGame()
     updateScore()
-
+    settingsToggle(mainMenu, matchMenu, rounds)
     
 }
 
